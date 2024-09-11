@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ResMenu from "../module/ResMenu";
 
 import { Box, Container, Typography } from "@mui/material";
 
@@ -20,7 +21,9 @@ function Layout({ children }) {
       <main>{children}</main>
 
       <aside>
-        <Container maxWidth="lg"></Container>
+        <Container maxWidth="lg">
+          <ResMenu />
+        </Container>
       </aside>
 
       <footer>
