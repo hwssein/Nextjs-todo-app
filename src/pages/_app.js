@@ -8,15 +8,15 @@ import { Container, ThemeProvider } from "@mui/material";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <SessionProvider session={pageProps.session}>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            <Container maxWidth="lg">
-              <Component {...pageProps} />
-            </Container>
-          </Layout>
-        </ThemeProvider>
-      </SessionProvider>
+      {/* <SessionProvider session={pageProps.session}> */}
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Container maxWidth="lg">
+            <Component {...pageProps} />
+          </Container>
+        </Layout>
+      </ThemeProvider>
+      {/* </SessionProvider> */}
     </>
   );
 }
