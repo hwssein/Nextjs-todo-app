@@ -1,7 +1,7 @@
-import Link from "next/link";
 import ResMenu from "../module/ResMenu";
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Grid2 } from "@mui/material";
+import Sidebar from "../module/Sidebar";
 
 function Layout({ children }) {
   return (
@@ -13,18 +13,25 @@ function Layout({ children }) {
             width: "100%",
             height: "2px",
             backgroundColor: "var(--tertiary)",
-            marginBottom: "8px",
+            marginBottom: "16px",
           }}
         ></Box>
       </header>
 
-      <main>{children}</main>
+      <Grid2 container>
+        <Grid2 size={{ xs: 12, sm: 4, lg: 2 }}>
+          <Container maxWidth="lg">
+            <aside>
+              <ResMenu />
+              <Sidebar />
+            </aside>
+          </Container>
+        </Grid2>
 
-      <aside>
-        <Container maxWidth="lg">
-          <ResMenu />
-        </Container>
-      </aside>
+        <Grid2 size={{ xs: 12, sm: 8, lg: 10 }}>
+          <main>{children}</main>
+        </Grid2>
+      </Grid2>
 
       <footer></footer>
     </>

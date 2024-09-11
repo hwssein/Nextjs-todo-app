@@ -1,0 +1,29 @@
+.sidebar_container {
+  display: none;
+}
+
+.sidebar_link {
+  width: 100%;
+  padding: 8px 0;
+  margin: 4px 0;
+  text-align: center;
+  border: 1px solid var(--stroke);
+  border-radius: 4px;
+}
+
+.selected {
+  background-color: var(--primary);
+}
+.unselected {
+  background-color: var(--main-bg-color);
+}
+
+@media (min-width: 601px) {
+  .sidebar_container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
