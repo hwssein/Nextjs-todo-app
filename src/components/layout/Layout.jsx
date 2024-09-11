@@ -26,39 +26,7 @@ function Layout({ children }) {
         </Container>
       </aside>
 
-      <footer>
-        <Container
-          maxWidth="lg"
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexFlow: "column nowrap",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            marginBottom: "48px",
-          }}
-        >
-          <Link href="https://github.com/hwssein" target="_blank">
-            <Box
-              component="div"
-              sx={{
-                borderBottom: "2px solid var(--tertiary)",
-                borderRadius: "4px",
-              }}
-            >
-              <Typography
-                component="p"
-                variant="p"
-                textAlign="center"
-                p={1}
-                mt={2}
-              >
-                Developed By hwssein
-              </Typography>
-            </Box>
-          </Link>
-        </Container>
-      </footer>
+      <footer></footer>
     </>
   );
 }
