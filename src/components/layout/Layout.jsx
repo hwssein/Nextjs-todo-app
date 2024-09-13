@@ -13,7 +13,7 @@ function Layout({ children }) {
             width: "100%",
             height: "2px",
             backgroundColor: "var(--tertiary)",
-            marginBottom: "16px",
+            marginBottom: "32px",
           }}
         ></Box>
       </header>

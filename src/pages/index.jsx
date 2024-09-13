@@ -1,9 +1,7 @@
+import AuthPage from "@/components/template/authPage";
+
 function HomePage() {
-  return (
-    <>
-      <div>HomePage</div>
-    </>
-  );
+  return <AuthPage />;
 }
 
 export default HomePage;
