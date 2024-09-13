@@ -20,7 +20,7 @@ const handler = async (req, res) => {
     return res.status(422).json({
       status: "failed",
       message: "can not accept email",
-      notification: "ایمیل وارد شده قابل قبول نیست",
+      notification: "ایمیل وارد شده نا معتبر است",
     });
   }
 
