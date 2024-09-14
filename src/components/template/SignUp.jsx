@@ -5,9 +5,7 @@ import { useRouter } from "next/router";
 import { Box } from "@mui/material";
 import { toast } from "react-toastify";
 
-function SignUp() {
-  const router = useRouter();
-
+function SignUp({ setEntryStatus }) {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -42,7 +40,8 @@ function SignUp() {
     }
 
     if (res.status === "success") {
-      router.reload();
+      setEntryStatus("signIn");
+      toast.success("اکنون وارد حساب خود شوید");
     }
   };
 

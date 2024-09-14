@@ -75,15 +75,15 @@ function Form({ form, submitHandler, changeHandler, loadingBtn }) {
             type="submit"
             sx={{ marginTop: "16px", marginBottom: "8px", width: "300px" }}
           >
-            ایجاد حساب
+            ادامه
           </Button>
         ) : (
           <Button
             variant="contained"
             type="submit"
-            sx={{ marginTop: "16px", marginBottom: "8px", width: "300px" }}
+            sx={{ marginTop: "8px", marginBottom: "8px", width: "300px" }}
           >
-            ایجاد حساب
+            ادامه
           </Button>
         )}
       </form>

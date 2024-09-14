@@ -19,7 +19,7 @@ function AuthPage() {
           alignItems: "center",
           justifyContent: "flex-start",
           backgroundColor: "var(--card-bg-color)",
-          borderRadius: "4px",
+          borderRadius: "8px",
           marginTop: "4px",
           padding: "4px",
         }}
@@ -83,7 +83,11 @@ function AuthPage() {
           </Button>
         </Box>
 
-        {entryStatus === "signUp" ? <SignUp /> : <SignIn />}
+        {entryStatus === "signUp" ? (
+          <SignUp setEntryStatus={setEntryStatus} />
+        ) : (
+          <SignIn />
+        )}
       </Box>
     </>
   );

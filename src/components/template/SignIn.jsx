@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { Box } from "@mui/material";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
+import AuthProviders from "../module/AuthProviders";
 
 function SignIn() {
   const router = useRouter();
@@ -46,8 +47,6 @@ function SignIn() {
       toast.success("با موفقیت وارد شدید");
       router.replace("/not-done");
     }
-
-    console.log(req);
   };
 
   return (
@@ -64,6 +63,8 @@ function SignIn() {
         changeHandler={changeHandler}
         submitHandler={submitHandler}
       />
+
+      <AuthProviders />
     </Box>
   );
 }

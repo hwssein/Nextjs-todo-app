@@ -14,13 +14,13 @@
 }
 
 :root {
-  --main-bg-color: #242629;
-  --card-bg-color: #16161a;
+  --main-bg-color: #2b2b2c;
+  --card-bg-color: #18181b;
   --text: #fffffe;
   --stroke: #010101;
-  --primary: #7f5af0;
+  --primary: #2cb67d;
   --secondary: #72757e;
-  --tertiary: #2cb67d;
+  --tertiary: #7f5af0;
 }
 
 body {

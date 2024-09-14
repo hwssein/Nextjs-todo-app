@@ -3,13 +3,13 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#7f5af0",
+      main: "#2cb67d",
     },
     secondary: {
       main: "#72757e",
     },
     tertiary: {
-      main: "#2cb67d",
+      main: "#7f5af0",
     },
     stroke: {
       main: "#010101",
@@ -18,10 +18,10 @@ const theme = createTheme({
       main: "#fffffe",
     },
     cardBgColor: {
-      main: "#16161a",
+      main: "#18181b",
     },
     mainBgColor: {
-      main: "#242629",
+      main: "#2b2b2c",
     },
   },
 
