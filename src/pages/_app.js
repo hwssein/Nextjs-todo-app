@@ -11,27 +11,27 @@ import { ToastContainer } from "react-toastify";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      {/* <SessionProvider session={pageProps.session}> */}
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Container maxWidth="lg">
-            <Component {...pageProps} />
-            <ToastContainer
-              position="top-center"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={true}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-            />
-          </Container>
-        </Layout>
-      </ThemeProvider>
-      {/* </SessionProvider> */}
+      <SessionProvider session={pageProps.session}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Container maxWidth="lg">
+              <Component {...pageProps} />
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={true}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
+            </Container>
+          </Layout>
+        </ThemeProvider>
+      </SessionProvider>
     </>
   );
 }
