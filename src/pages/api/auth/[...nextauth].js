@@ -2,7 +2,7 @@ import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { verifyPassword } from "@/utils/verify";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "../../../../lib/db";
+import client from "../../../../lib/db";
 
 import nextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -10,11 +10,15 @@ import GitHubProvider from "next-auth/providers/github";
 
 const authOption = {
   session: { strategy: "jwt" },
-  adapter: MongoDBAdapter(clientPromise),
-  pages: {
-    signIn: "/",
-  },
+
+  adapter: MongoDBAdapter(client),
+
   providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+
     CredentialsProvider({
       async authorize(credentials, req) {
         const { email, password } = credentials;
@@ -75,11 +79,6 @@ const authOption = {
 
         return { email };
       },
-    }),
-
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
 };
