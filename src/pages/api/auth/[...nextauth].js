@@ -7,16 +7,27 @@ import client from "../../../../lib/db";
 import nextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 const authOption = {
   session: { strategy: "jwt" },
 
   adapter: MongoDBAdapter(client),
 
+  secret: process.env.SECRET,
+
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
+    }),
+
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      // httpOptions: {
+      //   timeout: 10000,
+      // },
     }),
 
     CredentialsProvider({
@@ -83,4 +94,6 @@ const authOption = {
   ],
 };
 
-export default nextAuth(authOption);
+const handler = nextAuth(authOption);
+
+export default handler;
