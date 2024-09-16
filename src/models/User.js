@@ -20,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     minLength: 3,
   },
+  todo: [{ title: String, status: String }],
   createdAt: {
     type: Date,
     default: () => Date.now(),
