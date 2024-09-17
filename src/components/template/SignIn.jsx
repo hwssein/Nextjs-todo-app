@@ -36,16 +36,22 @@ function SignIn() {
     });
 
     if (req.ok === false) {
-      const notification = JSON.parse(req.error);
+      let notification;
+
+      try {
+        notification = JSON.parse(req.error);
+      } catch (e) {
+        notification = "مشکلی رخ داده است";
+      }
 
       setLoadingBtn(false);
 
-      toast.error(notification.fa);
+      toast.error(notification);
     }
 
     if (req.ok === true) {
       toast.success("با موفقیت وارد شدید");
-      router.replace("/not-done");
+      router.replace("/add-todo");
     }
   };
 

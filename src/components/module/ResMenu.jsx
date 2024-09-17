@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Box, Typography } from "@mui/material";
 import styles from "@/styles/resMenu.module.css";
+import { useRouter } from "next/router";
 
 function ResMenu() {
-  const [select, setSelect] = useState(1);
+  const router = useRouter();
+  const [select, setSelect] = useState(null);
+
+  useEffect(() => {
+    if (router.route === "/not-done") setSelect(1);
+    if (router.route === "/add-todo") setSelect(null);
+  }, [router.route]);
 
   return (
     <>

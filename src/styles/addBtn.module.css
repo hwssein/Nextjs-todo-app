@@ -1,0 +1,10 @@
+.add_btn_container {
+  width: 100%;
+  margin-top: 4px;
+}
+
+@media (max-width: 601px) {
+  .add_btn_container {
+    display: none;
+  }
+}

@@ -1,8 +1,12 @@
+import PlusBtn from "@/components/elements/PlusBtn";
 import { getSession } from "next-auth/react";
-import React from "react";
 
 function NotDone() {
-  return <div>NotDone</div>;
+  return (
+    <>
+      <PlusBtn />
+    </>
+  );
 }
 
 const getServerSideProps = async ({ req }) => {

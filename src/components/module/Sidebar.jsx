@@ -2,9 +2,10 @@ import styles from "@/styles/sidebar.module.css";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import AddBtn from "../elements/AddBtn";
 
 function Sidebar() {
-  const [select, setSelect] = useState(1);
+  const [select, setSelect] = useState(4);
   return (
     <>
       <Box component="div" className={styles.sidebar_container}>
@@ -58,6 +59,15 @@ function Sidebar() {
           <Typography component="span" variant="span" sx={{ width: "100%" }}>
             انجام شده
           </Typography>
+        </Link>
+
+        <Link
+          href="add-todo"
+          replace={true}
+          onClick={() => setSelect(4)}
+          className={`${styles.add_todo_btn} ${select === 4 && null}`}
+        >
+          <AddBtn />
         </Link>
       </Box>
     </>

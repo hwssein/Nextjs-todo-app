@@ -97,3 +97,4 @@ const authOption = {
 const handler = nextAuth(authOption);
 
 export default handler;
+export { authOption };

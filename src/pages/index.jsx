@@ -16,7 +16,7 @@ const getServerSideProps = async ({ req }) => {
   if (session) {
     return {
       redirect: {
-        destination: "/not-done",
+        destination: "/add-todo",
         permanent: false,
       },
     };
