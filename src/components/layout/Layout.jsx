@@ -22,10 +22,19 @@ function Layout({ children }) {
         ></Box>
       </header>
 
-      <Grid2 container>
+      <Grid2
+        container
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "flex-start",
+          justifyContent: "center",
+        }}
+      >
         {status === "authenticated" && (
           <Grid2 size={{ xs: 12, sm: 4, lg: 2 }}>
-            <Container maxWidth="lg">
+            <Container maxWidth="md">
               <aside>
                 <ResMenu />
                 <Sidebar />

@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
       <SessionProvider session={pageProps.session}>
         <ThemeProvider theme={theme}>
           <Layout>
-            <Container maxWidth="lg">
+            <Container maxWidth="md">
               <Component {...pageProps} />
               <ToastContainer
                 position="top-center"
