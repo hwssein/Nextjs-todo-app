@@ -1,11 +1,22 @@
 import styles from "@/styles/sidebar.module.css";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddBtn from "../elements/AddBtn";
+import { useRouter } from "next/router";
 
 function Sidebar() {
+  const router = useRouter();
   const [select, setSelect] = useState(4);
+
+  useEffect(() => {
+    if (router.route === "/profile") setSelect(0);
+    if (router.route === "/not-done") setSelect(1);
+    if (router.route === "/in-progress") setSelect(2);
+    if (router.route === "/done") setSelect(3);
+    if (router.route === "/add-todo") setSelect(null);
+  }, [router.route]);
+
   return (
     <>
       <Box component="div" className={styles.sidebar_container}>

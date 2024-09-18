@@ -10,7 +10,10 @@ function ResMenu() {
   const [select, setSelect] = useState(null);
 
   useEffect(() => {
+    if (router.route === "/profile") setSelect(0);
     if (router.route === "/not-done") setSelect(1);
+    if (router.route === "/in-progress") setSelect(2);
+    if (router.route === "/done") setSelect(3);
     if (router.route === "/add-todo") setSelect(null);
   }, [router.route]);
 
