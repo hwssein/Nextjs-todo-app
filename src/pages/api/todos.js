@@ -1,3 +1,4 @@
+import { sortTodo } from "@/utils/sortTodo";
 import { authOption } from "./auth/[...nextauth]";
 import verifyUserReq from "@/utils/verifyUserReq";
 
@@ -31,6 +32,10 @@ const handler = async (req, res) => {
       notification: "با موفقیت ایجاد شد",
       data: verifyUser.user,
     });
+  } else if (req.method === "GET") {
+    const sortedTodo = sortTodo(verifyUser.user.todo);
+
+    res.status(200).json({ status: "success", data: sortedTodo });
   }
 };
 
