@@ -20,7 +20,7 @@ const verifyUserReq = async (req, res, authOption) => {
     return {
       code: 500,
       status: "failed",
-      message: "connection failed",
+      message: "DB connection failed",
       notification: "مشکلی در اتصال رخ داده",
     };
   }
