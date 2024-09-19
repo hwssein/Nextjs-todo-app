@@ -23,7 +23,7 @@ const handler = async (req, res) => {
         notification: "لطفا فیلد ها را پر کنید",
       });
 
-    verifyUser.user.todo.push({ title, status });
+    verifyUser.user.todos.push({ title, status });
     verifyUser.user.save();
 
     res.status(201).json({
@@ -33,7 +33,7 @@ const handler = async (req, res) => {
       data: verifyUser.user,
     });
   } else if (req.method === "GET") {
-    const sortedTodo = sortTodo(verifyUser.user.todo);
+    const sortedTodo = sortTodo(verifyUser.user.todos);
 
     res.status(200).json({ status: "success", data: sortedTodo });
   }

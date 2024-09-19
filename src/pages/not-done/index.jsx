@@ -1,9 +1,11 @@
 import PlusBtn from "@/components/elements/PlusBtn";
+import NotDonePage from "@/components/template/NotDonePage";
 import { getSession } from "next-auth/react";
 
 function NotDone() {
   return (
     <>
+      <NotDonePage />
       <PlusBtn />
     </>
   );

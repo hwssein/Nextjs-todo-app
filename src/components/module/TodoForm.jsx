@@ -56,10 +56,10 @@ function TodoForm({ todo, submitHandler, changeHandler, loadingBtn }) {
           }}
         >
           <Button
-            variant={todo.status === "not-done" ? "contained" : "outlined"}
+            variant={todo.status === "notDone" ? "contained" : "outlined"}
             color="secondary"
             name="status"
-            value="not-done"
+            value="notDone"
             onClick={changeHandler}
             sx={{ width: "100px" }}
           >
@@ -67,10 +67,10 @@ function TodoForm({ todo, submitHandler, changeHandler, loadingBtn }) {
           </Button>
 
           <Button
-            variant={todo.status === "in-progress" ? "contained" : "outlined"}
+            variant={todo.status === "inProgress" ? "contained" : "outlined"}
             color="secondary"
             name="status"
-            value="in-progress"
+            value="inProgress"
             onClick={changeHandler}
             sx={{ width: "100px" }}
           >
