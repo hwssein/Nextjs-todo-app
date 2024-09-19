@@ -1,8 +1,8 @@
+import { Box, Grid2, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ShowTodo from "../module/ShowTodo";
-import { Box, Grid2, Typography } from "@mui/material";
 
-function NotDonePage() {
+function InProgressPage() {
   const [todo, setTodo] = useState(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function NotDonePage() {
     const res = await fetch("/api/todos");
     const data = await res.json();
 
-    if (data.data.notDone) setTodo(data.data.notDone);
+    if (data.data.inProgress) setTodo(data.data.inProgress);
   };
 
   if (!todo)
@@ -70,4 +70,4 @@ function NotDonePage() {
   );
 }
 
-export default NotDonePage;
+export default InProgressPage;

@@ -1,8 +1,13 @@
+import InProgressPage from "@/components/template/InProgressPage";
 import { getSession } from "next-auth/react";
 import React from "react";
 
 function InProgress() {
-  return <div>InProgress</div>;
+  return (
+    <>
+      <InProgressPage />
+    </>
+  );
 }
 const getServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
