@@ -1,8 +1,13 @@
+import DonePage from "@/components/template/DonePage";
 import { getSession } from "next-auth/react";
 import React from "react";
 
 function Done() {
-  return <div>Done</div>;
+  return (
+    <>
+      <DonePage />
+    </>
+  );
 }
 
 const getServerSideProps = async ({ req }) => {
