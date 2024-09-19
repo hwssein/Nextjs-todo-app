@@ -29,6 +29,13 @@ function SignIn() {
 
     setLoadingBtn(true);
 
+    if (!form.email || !form.password) {
+      toast.error("ایمیل یا رمز عبور را وارد کنید");
+
+      setLoadingBtn(false);
+      return;
+    }
+
     const req = await signIn("credentials", {
       email: form.email,
       password: form.password,

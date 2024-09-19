@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 
@@ -90,17 +91,16 @@ function TodoForm({ todo, submitHandler, changeHandler, loadingBtn }) {
         </Box>
 
         {loadingBtn ? (
-          <Button
+          <LoadingButton
             variant="contained"
-            type="submit"
+            loading
             disabled
             sx={{
               width: "300px",
+              height: "40px",
               marginTop: "24px",
             }}
-          >
-            ذخیره
-          </Button>
+          ></LoadingButton>
         ) : (
           <Button
             variant="contained"

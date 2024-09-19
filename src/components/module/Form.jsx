@@ -1,6 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import styles from "@/styles/form.module.css";
 import { useState } from "react";
+import { LoadingButton } from "@mui/lab";
 
 function Form({ form, submitHandler, changeHandler, loadingBtn }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -69,14 +70,16 @@ function Form({ form, submitHandler, changeHandler, loadingBtn }) {
         />
 
         {loadingBtn ? (
-          <Button
+          <LoadingButton
             variant="contained"
-            disabled
-            type="submit"
-            sx={{ marginTop: "16px", marginBottom: "8px", width: "300px" }}
-          >
-            ادامه
-          </Button>
+            loading
+            sx={{
+              marginTop: "16px",
+              marginBottom: "8px",
+              width: "300px",
+              height: "40px",
+            }}
+          ></LoadingButton>
         ) : (
           <Button
             variant="contained"
