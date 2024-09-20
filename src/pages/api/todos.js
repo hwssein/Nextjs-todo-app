@@ -59,9 +59,7 @@ const handler = async (req, res) => {
         notification: "مشکلی رخ داده است",
       });
 
-    res
-      .status(200)
-      .json({ status: "success", message: "data updated", data: result });
+    res.status(200).json({ status: "success", message: "data updated" });
   }
 };
 
