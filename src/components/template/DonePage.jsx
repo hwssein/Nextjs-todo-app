@@ -1,6 +1,7 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ShowTodo from "../module/ShowTodo";
+import { toast } from "react-toastify";
 
 function DonePage() {
   const [todo, setTodo] = useState(null);
@@ -17,8 +18,19 @@ function DonePage() {
     if (data.data.done) setTodo(data.data.done);
   };
 
-  const deleteHandler = async () => {
-    console.log("delete");
+  const deleteHandler = async (id) => {
+    const res = await fetch("/api/todos", {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+
+    if (data.status === "failed") toast.error(data.notification);
+    if (data.status === "success") {
+      toast.success("با موفقیت حذف شد");
+      fetchData();
+    }
   };
 
   if (!todo)

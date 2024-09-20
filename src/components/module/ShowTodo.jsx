@@ -57,7 +57,7 @@ function ShowTodo({
               variant="contained"
               size="small"
               color="error"
-              onClick={deleteHandler}
+              onClick={() => deleteHandler(data._id)}
             >
               حذف
             </Button>
