@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import ShowTodo from "../module/ShowTodo";
 import { Box, Grid2, Typography } from "@mui/material";
+import { toast } from "react-toastify";
 
 function NotDonePage() {
   const [todo, setTodo] = useState(null);
+  const [todoStatus, setTodoStatus] = useState({
+    id: "",
+    statusBtn: "",
+  });
 
   useEffect(() => {
     fetchData();
@@ -16,8 +21,23 @@ function NotDonePage() {
     if (data.data.notDone) setTodo(data.data.notDone);
   };
 
-  const statusHandler = async () => {
-    console.log("not done");
+  const statusHandler = async (id) => {
+    setTodoStatus((todoStatus) => ({ id, statusBtn: "inProgress" }));
+
+    const newTodoStatus = { id, statusBtn: "inProgress" };
+
+    const res = await fetch("/api/todos", {
+      method: "PATCH",
+      body: JSON.stringify(newTodoStatus),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+
+    if (data.status === "failed") toast.error(data.notification);
+    if (data.status === "success") {
+      toast.success("وضعیت به درحال انجام تغییر کرد");
+      fetchData();
+    }
   };
 
   if (!todo)

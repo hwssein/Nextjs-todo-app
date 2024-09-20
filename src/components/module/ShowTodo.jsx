@@ -62,7 +62,11 @@ function ShowTodo({
               حذف
             </Button>
           ) : (
-            <Button variant="contained" size="small" onClick={statusHandler}>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={() => statusHandler(data._id)}
+            >
               {btnStatus}
             </Button>
           )}
