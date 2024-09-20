@@ -16,6 +16,10 @@ function NotDonePage() {
     if (data.data.notDone) setTodo(data.data.notDone);
   };
 
+  const statusHandler = async () => {
+    console.log("not done");
+  };
+
   if (!todo)
     return (
       <>
@@ -62,7 +66,11 @@ function NotDonePage() {
               width: "100%",
             }}
           >
-            <ShowTodo data={item} />
+            <ShowTodo
+              data={item}
+              btnStatus="انجام دادن"
+              statusHandler={statusHandler}
+            />
           </Grid2>
         ))}
       </Grid2>

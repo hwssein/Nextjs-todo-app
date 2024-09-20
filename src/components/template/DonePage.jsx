@@ -4,6 +4,7 @@ import ShowTodo from "../module/ShowTodo";
 
 function DonePage() {
   const [todo, setTodo] = useState(null);
+  const [deleteBtn, setDeleteBtn] = useState(true);
 
   useEffect(() => {
     fetchData();
@@ -14,6 +15,10 @@ function DonePage() {
     const data = await res.json();
 
     if (data.data.done) setTodo(data.data.done);
+  };
+
+  const deleteHandler = async () => {
+    console.log("delete");
   };
 
   if (!todo)
@@ -62,7 +67,11 @@ function DonePage() {
               width: "100%",
             }}
           >
-            <ShowTodo data={item} />
+            <ShowTodo
+              data={item}
+              setDeleteBtn={true}
+              deleteHandler={deleteHandler}
+            />
           </Grid2>
         ))}
       </Grid2>

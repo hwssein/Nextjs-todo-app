@@ -16,6 +16,10 @@ function InProgressPage() {
     if (data.data.inProgress) setTodo(data.data.inProgress);
   };
 
+  const statusHandler = async () => {
+    console.log("inprogress");
+  };
+
   if (!todo)
     return (
       <>
@@ -62,7 +66,11 @@ function InProgressPage() {
               width: "100%",
             }}
           >
-            <ShowTodo data={item} />
+            <ShowTodo
+              data={item}
+              btnStatus={"تمام"}
+              statusHandler={statusHandler}
+            />
           </Grid2>
         ))}
       </Grid2>

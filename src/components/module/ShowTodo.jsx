@@ -1,6 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 
-function ShowTodo({ data }) {
+function ShowTodo({
+  data,
+  btnStatus,
+  setDeleteBtn,
+  deleteHandler,
+  statusHandler,
+}) {
   return (
     <>
       <Box
@@ -46,9 +52,20 @@ function ShowTodo({ data }) {
             justifyContent: "flex-end",
           }}
         >
-          <Button variant="contained" size="small">
-            تغییر وضعیت
-          </Button>
+          {setDeleteBtn ? (
+            <Button
+              variant="contained"
+              size="small"
+              color="error"
+              onClick={deleteHandler}
+            >
+              حذف
+            </Button>
+          ) : (
+            <Button variant="contained" size="small" onClick={statusHandler}>
+              {btnStatus}
+            </Button>
+          )}
         </Box>
       </Box>
     </>
