@@ -60,6 +60,29 @@ const handler = async (req, res) => {
       });
 
     res.status(200).json({ status: "success", message: "data updated" });
+  } else if (req.method === "DELETE") {
+    const { id } = req.body;
+
+    if (!id)
+      return res.status(422).json({
+        status: "failed",
+        message: "invalid data",
+        notification: "مشکلی رخ داده است",
+      });
+
+    const result = await User.updateOne(
+      { _id: verifyUser.user._id },
+      { $pull: { todos: { _id: id } } }
+    );
+
+    if (result.modifiedCount === 0)
+      return res.status(500).json({
+        status: "failed",
+        message: "can not delete todo",
+        notification: "مشکلی رخ داده است",
+      });
+
+    res.status(200).json({ status: "success", message: "todo deleted" });
   }
 };
 
