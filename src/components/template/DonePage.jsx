@@ -1,22 +1,13 @@
-import { Box, Grid2, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Grid2 } from "@mui/material";
 import ShowTodo from "../module/ShowTodo";
 import { toast } from "react-toastify";
+import useSWR, { mutate } from "swr";
+import fetcher from "@/utils/fetcher";
+import Loader from "../elements/Loader";
+import NotFoundTodos from "../module/notFoundTodos";
 
 function DonePage() {
-  const [todo, setTodo] = useState(null);
-  const [deleteBtn, setDeleteBtn] = useState(true);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const res = await fetch("/api/todos");
-    const data = await res.json();
-
-    if (data.data.done) setTodo(data.data.done);
-  };
+  const { data, error, isLoading } = useSWR("/api/todos?status=done", fetcher);
 
   const deleteHandler = async (id) => {
     const res = await fetch("/api/todos", {
@@ -29,34 +20,13 @@ function DonePage() {
     if (data.status === "failed") toast.error(data.notification);
     if (data.status === "success") {
       toast.success("با موفقیت حذف شد");
-      fetchData();
+      mutate("/api/todos?status=done");
     }
   };
 
-  if (!todo)
-    return (
-      <>
-        <Box
-          component="div"
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexFlow: "row nowrap",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            component="h6"
-            variant="h6"
-            p={1}
-            sx={{ borderBottom: "2px solid var(--primary)" }}
-          >
-            هنوز موردی وارد نشده
-          </Typography>
-        </Box>
-      </>
-    );
+  if (isLoading) return <Loader />;
+
+  if (!data.data || data.data.length === 0) return <NotFoundTodos />;
 
   return (
     <>
@@ -71,7 +41,7 @@ function DonePage() {
           justifyContent: "space-between",
         }}
       >
-        {todo.map((item) => (
+        {data.data.map((item) => (
           <Grid2
             key={item._id}
             size={{ xs: 12, sm: 6 }}

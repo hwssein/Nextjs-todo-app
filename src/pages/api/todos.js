@@ -34,9 +34,15 @@ const handler = async (req, res) => {
       data: verifyUser.user,
     });
   } else if (req.method === "GET") {
+    const { status } = req.query;
+
     const sortedTodo = sortTodo(verifyUser.user.todos);
 
-    res.status(200).json({ status: "success", data: sortedTodo });
+    const filteredData = Object.entries(sortedTodo)
+      .filter(([key]) => key === status)
+      .map(([key, value]) => value);
+
+    res.status(200).json({ status: "success", data: filteredData[0] });
   } else if (req.method === "PATCH") {
     const { id, statusBtn } = req.body;
 

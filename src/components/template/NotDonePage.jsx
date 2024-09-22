@@ -1,25 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ShowTodo from "../module/ShowTodo";
-import { Box, Grid2, Typography } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import { toast } from "react-toastify";
+import useSWR, { mutate } from "swr";
+import fetcher from "@/utils/fetcher";
+import Loader from "../elements/Loader";
+import NotFoundTodos from "../module/notFoundTodos";
 
 function NotDonePage() {
-  const [todo, setTodo] = useState(null);
   const [todoStatus, setTodoStatus] = useState({
     id: "",
     statusBtn: "",
   });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const res = await fetch("/api/todos");
-    const data = await res.json();
-
-    if (data.data.notDone) setTodo(data.data.notDone);
-  };
+  const { data, error, isLoading } = useSWR(
+    "/api/todos?status=notDone",
+    fetcher
+  );
 
   const statusHandler = async (id) => {
     setTodoStatus((todoStatus) => ({ id, statusBtn: "inProgress" }));
@@ -36,34 +33,13 @@ function NotDonePage() {
     if (data.status === "failed") toast.error(data.notification);
     if (data.status === "success") {
       toast.success("وضعیت به درحال انجام تغییر کرد");
-      fetchData();
+      mutate("/api/todos?status=notDone");
     }
   };
 
-  if (!todo)
-    return (
-      <>
-        <Box
-          component="div"
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexFlow: "row nowrap",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            component="h6"
-            variant="h6"
-            p={1}
-            sx={{ borderBottom: "2px solid var(--primary)" }}
-          >
-            هنوز موردی وارد نشده
-          </Typography>
-        </Box>
-      </>
-    );
+  if (isLoading) return <Loader />;
+
+  if (!data.data || data.data.length === 0) return <NotFoundTodos />;
 
   return (
     <>
@@ -78,7 +54,7 @@ function NotDonePage() {
           justifyContent: "space-between",
         }}
       >
-        {todo.map((item) => (
+        {data.data.map((item) => (
           <Grid2
             key={item._id}
             size={{ xs: 12, sm: 6 }}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import TodoForm from "../module/TodoForm";
 import { Box, Typography } from "@mui/material";
+import { mutate } from "swr";
 
 function AddTodoPage() {
   const [todo, setTodo] = useState({
@@ -42,6 +43,8 @@ function AddTodoPage() {
         title: "",
         status: "",
       });
+
+      mutate("/api/todos");
     }
   };
   return (
