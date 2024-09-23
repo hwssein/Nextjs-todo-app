@@ -39,6 +39,7 @@ function ProfileDetailsForm() {
     if (data.status === "success") {
       toast.success(data.notification);
       mutate("/api/profile");
+      mutate("/api/profile");
     }
   };
 

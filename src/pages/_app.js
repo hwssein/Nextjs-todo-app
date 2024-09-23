@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
             <Container maxWidth="md">
               <Component {...pageProps} />
               <ToastContainer
-                position="top-center"
+                position="bottom-right"
                 autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop={false}

@@ -12,7 +12,7 @@ function ProfilePage() {
   const { data, error, isLoading } = useSWR("/api/profile", fetcher);
 
   const signOutHandler = () => {
-    const confirmQuestion = confirm("آیا خارج می شوید؟");
+    const confirmQuestion = confirm("خارج می شوید؟");
 
     if (confirmQuestion) signOut();
   };
