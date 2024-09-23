@@ -1,8 +1,12 @@
+import ProfilePage from "@/components/template/ProfilePage";
 import { getSession } from "next-auth/react";
-import React from "react";
 
 function Profile() {
-  return <div>Profile</div>;
+  return (
+    <>
+      <ProfilePage />
+    </>
+  );
 }
 
 const getServerSideProps = async ({ req }) => {
