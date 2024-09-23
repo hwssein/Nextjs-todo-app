@@ -1,11 +1,13 @@
-import { Grid2 } from "@mui/material";
-import { useState } from "react";
 import ShowTodo from "../module/ShowTodo";
-import { toast } from "react-toastify";
-import useSWR, { mutate } from "swr";
 import fetcher from "@/utils/fetcher";
+import NotFoundTodos from "../module/NotFoundTodos";
+
+import { useState } from "react";
+import useSWR, { mutate } from "swr";
+
+import { Grid2 } from "@mui/material";
+import { toast } from "react-toastify";
 import Loader from "../elements/Loader";
-import NotFoundTodos from "../module/notFoundTodos";
 
 function InProgressPage() {
   const [todoStatus, setTodoStatus] = useState({

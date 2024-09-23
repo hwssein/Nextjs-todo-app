@@ -1,10 +1,12 @@
-import { Grid2 } from "@mui/material";
 import ShowTodo from "../module/ShowTodo";
-import { toast } from "react-toastify";
-import useSWR, { mutate } from "swr";
 import fetcher from "@/utils/fetcher";
+import NotFoundTodos from "../module/NotFoundTodos";
+
+import useSWR, { mutate } from "swr";
+
+import { Grid2 } from "@mui/material";
+import { toast } from "react-toastify";
 import Loader from "../elements/Loader";
-import NotFoundTodos from "../module/notFoundTodos";
 
 function DonePage() {
   const { data, error, isLoading } = useSWR("/api/todos?status=done", fetcher);
