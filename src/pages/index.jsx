@@ -1,4 +1,4 @@
-import AuthPage from "@/components/template/authPage";
+import AuthPage from "@/components/template/AuthPage";
 import { Stack } from "@mui/material";
 import { getSession } from "next-auth/react";
 
