@@ -74,7 +74,7 @@ function Form({ form, submitHandler, changeHandler, loadingBtn }) {
             variant="contained"
             loading
             sx={{
-              marginTop: "16px",
+              marginTop: "8px",
               marginBottom: "8px",
               width: "300px",
               height: "40px",

@@ -5,7 +5,7 @@
 .res_menu_link {
   width: 25%;
   text-align: center;
-  padding: 8px;
+  padding: 10px 8px;
   border: 1px solid var(--stroke);
   border-radius: 4px;
 }
@@ -29,6 +29,6 @@
     justify-content: space-evenly;
     border-radius: 4px;
     z-index: 2;
-    padding: 0 4px;
+    padding: 2px 4px;
   }
 }

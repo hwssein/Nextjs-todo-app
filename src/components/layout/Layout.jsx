@@ -17,7 +17,7 @@ function Layout({ children }) {
             height: "2px",
             backgroundColor: "var(--tertiary)",
             marginBottom: "32px",
-            boxShadow: "0px 0px 7px 1px  var(--tertiary)",
+            boxShadow: "0px 0px 7px 2px  var(--tertiary)",
           }}
         ></Box>
       </header>
