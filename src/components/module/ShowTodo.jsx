@@ -26,6 +26,7 @@ function ShowTodo({
         <Box
           component="div"
           sx={{
+            width: "100%",
             display: "flex",
             flexFlow: "row nowrap",
             alignItems: "flex-start",
@@ -47,9 +48,30 @@ function ShowTodo({
           sx={{
             width: "100%",
             display: "flex",
+            flexFlow: "row nowrap",
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            gap: "8px",
+          }}
+        >
+          <Typography component="p" variant="p">
+            توضیحات:
+          </Typography>
+
+          <Typography component="p" variant="p">
+            {data.description}
+          </Typography>
+        </Box>
+
+        <Box
+          component="div"
+          sx={{
+            width: "100%",
+            display: "flex",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "flex-end",
+            marginTop: "8px",
           }}
         >
           {setDeleteBtn ? (

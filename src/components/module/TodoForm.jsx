@@ -44,6 +44,35 @@ function TodoForm({ todo, submitHandler, changeHandler, loadingBtn }) {
           }}
         />
 
+        <TextField
+          type="text"
+          multiline
+          rows={4}
+          placeholder="توضیحات"
+          name="description"
+          value={todo.description}
+          onChange={changeHandler}
+          sx={{
+            width: "300px",
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "var(--secondary)",
+              },
+              "&:hover fieldset": {
+                borderColor: "var(--text)",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "var(--primary)",
+              },
+            },
+          }}
+          inputProps={{
+            style: {
+              color: "var(--text)",
+            },
+          }}
+        />
+
         <Box
           component="div"
           sx={{

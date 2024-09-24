@@ -7,6 +7,7 @@ import { mutate } from "swr";
 function AddTodoPage() {
   const [todo, setTodo] = useState({
     title: "",
+    description: "",
     status: "",
   });
   const [loadingBtn, setLoadingBtn] = useState(false);
@@ -41,12 +42,14 @@ function AddTodoPage() {
       setLoadingBtn(false);
       setTodo({
         title: "",
+        description: "",
         status: "",
       });
 
       mutate("/api/todos");
     }
   };
+
   return (
     <>
       <Box

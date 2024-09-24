@@ -10,19 +10,12 @@ import { toast } from "react-toastify";
 import Loader from "../elements/Loader";
 
 function InProgressPage() {
-  const [todoStatus, setTodoStatus] = useState({
-    id: "",
-    statusBtn: "",
-  });
-
   const { data, error, isLoading } = useSWR(
     "/api/todos?status=inProgress",
     fetcher
   );
 
   const statusHandler = async (id) => {
-    setTodoStatus((todoStatus) => ({ id, statusBtn: "done" }));
-
     const newTodoStatus = { id, statusBtn: "done" };
 
     const res = await fetch("/api/todos", {
@@ -59,7 +52,7 @@ function InProgressPage() {
         {data.data.map((item) => (
           <Grid2
             key={item._id}
-            size={{ xs: 12, sm: 6 }}
+            size={{ xs: 12 }}
             sx={{
               width: "100%",
             }}

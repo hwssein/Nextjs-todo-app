@@ -15,16 +15,16 @@ const handler = async (req, res) => {
   }
 
   if (req.method === "POST") {
-    const { title, status } = req.body;
+    const { title, description, status } = req.body;
 
-    if (!title || !status)
+    if (!title || !description || !status)
       return res.status(422).json({
         status: "failed",
         message: "invalid data",
         notification: "لطفا فیلد ها را پر کنید",
       });
 
-    verifyUser.user.todos.push({ title, status });
+    verifyUser.user.todos.push({ title, description, status });
     verifyUser.user.save();
 
     res.status(201).json({

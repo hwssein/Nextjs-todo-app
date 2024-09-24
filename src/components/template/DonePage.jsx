@@ -46,7 +46,7 @@ function DonePage() {
         {data.data.map((item) => (
           <Grid2
             key={item._id}
-            size={{ xs: 12, sm: 6 }}
+            size={{ xs: 12 }}
             sx={{
               width: "100%",
             }}

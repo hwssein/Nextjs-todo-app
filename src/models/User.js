@@ -20,7 +20,7 @@ const userSchema = new Schema({
     type: String,
     minLength: 3,
   },
-  todos: [{ title: String, status: String }],
+  todos: [{ title: String, description: String, status: String }],
   createdAt: {
     type: Date,
     default: () => Date.now(),
