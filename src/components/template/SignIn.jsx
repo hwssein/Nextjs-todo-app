@@ -53,7 +53,7 @@ function SignIn() {
 
       setLoadingBtn(false);
 
-      toast.error(notification);
+      toast.error(notification.fa);
     }
 
     if (req.ok === true) {
