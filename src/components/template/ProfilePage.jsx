@@ -7,6 +7,7 @@ import useSWR from "swr";
 import Loader from "../elements/Loader";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import { signOut } from "next-auth/react";
+import { toast } from "react-toastify";
 
 function ProfilePage() {
   const { data, error, isLoading } = useSWR("/api/profile", fetcher);
@@ -15,6 +16,24 @@ function ProfilePage() {
     const confirmQuestion = confirm("خارج می شوید؟");
 
     if (confirmQuestion) signOut();
+  };
+
+  const deleteHandler = async () => {
+    const password = prompt("برای حذف حساب رمز عبور خود را وارد کنید");
+
+    const res = await fetch("/api/profile", {
+      method: "DELETE",
+      body: JSON.stringify({ password }),
+      headers: { "Content-type": "application/json" },
+    });
+    const data = await res.json();
+
+    if (data.status === "failed") toast.error(data.notification);
+
+    if (data.status === "success") {
+      toast.success(data.notification);
+      signOut();
+    }
   };
 
   if (isLoading) return <Loader />;
@@ -52,19 +71,40 @@ function ProfilePage() {
         </Box>
       </Stack>
 
-      <Button
-        variant="contained"
-        size="small"
-        onClick={signOutHandler}
+      <Box
+        component="div"
         sx={{
-          width: "100px",
-          marginTop: "16px",
-          display: "block",
-          float: "left",
+          width: "100",
+          display: "flex",
+          flexFlow: "row nowrap",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginTop: "24px",
         }}
       >
-        خروج
-      </Button>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={signOutHandler}
+          sx={{
+            width: "100px",
+          }}
+        >
+          خروج
+        </Button>
+
+        <Button
+          variant="contained"
+          size="small"
+          onClick={deleteHandler}
+          color="error"
+          sx={{
+            width: "100px",
+          }}
+        >
+          حذف حساب
+        </Button>
+      </Box>
     </>
   );
 }
