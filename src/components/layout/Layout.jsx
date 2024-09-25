@@ -15,9 +15,9 @@ function Layout({ children }) {
           sx={{
             width: "100%",
             height: "2px",
-            backgroundColor: "var(--tertiary)",
+            backgroundColor: "#bebfc0",
             marginBottom: "32px",
-            boxShadow: "0px 0px 7px 2px  var(--tertiary)",
+            boxShadow: "0px 0px 7px 2px #929394",
           }}
         ></Box>
       </header>
