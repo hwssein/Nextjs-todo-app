@@ -1,5 +1,6 @@
 import ProfilePage from "@/components/template/ProfilePage";
-import { getSession } from "next-auth/react";
+import { authOption } from "../api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
 function Profile() {
   return (
@@ -9,12 +10,12 @@ function Profile() {
   );
 }
 
-const getServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+const getServerSideProps = async (context) => {
+  const session = await getServerSession(context.req, context.res, authOption);
 
   if (!session) {
     return {
-      redirect: { destination: "/", permanent: false },
+      redirect: { destination: "/" },
     };
   }
 

@@ -1,6 +1,7 @@
 import AuthPage from "@/components/template/AuthPage";
 import { Stack } from "@mui/material";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOption } from "./api/auth/[...nextauth]";
 
 function HomePage() {
   return (
@@ -10,8 +11,8 @@ function HomePage() {
   );
 }
 
-const getServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+const getServerSideProps = async (context) => {
+  const session = await getServerSession(context.req, context.res, authOption);
 
   if (session) {
     return {

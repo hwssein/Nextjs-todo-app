@@ -11,7 +11,6 @@ import { signOut } from "next-auth/react";
 import { toast } from "react-toastify";
 
 function ProfilePage() {
-  const router = useRouter();
   const { data, error, isLoading } = useSWR("/api/profile", fetcher);
 
   const signOutHandler = () => {
@@ -35,7 +34,6 @@ function ProfilePage() {
     if (data.status === "success") {
       toast.success(data.notification);
       signOut();
-      router.replace("/");
     }
   };
 
