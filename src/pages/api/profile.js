@@ -70,20 +70,22 @@ const handler = async (req, res) => {
   } else if (req.method === "DELETE") {
     const { password } = req.body;
 
-    const isValidPassword = await verifyPassword(
-      password,
-      verifyUser.user.password
-    );
+    if (verifyUser.user.password) {
+      const isValidPassword = await verifyPassword(
+        password,
+        verifyUser.user.password
+      );
 
-    if (!password || !isValidPassword)
-      return res.status(422).json({
-        status: "failed",
-        message: "invalid data",
-        notification: "رمز عبور اشتباه است",
-      });
+      if (!password || !isValidPassword)
+        return res.status(422).json({
+          status: "failed",
+          message: "invalid data",
+          notification: "رمز عبور اشتباه است",
+        });
+    }
 
     try {
-      const deleteAccount = await User.findByIdAndDelete({
+      await User.findByIdAndDelete({
         _id: verifyUser.user._id,
       });
 

@@ -3,6 +3,7 @@ import ProfileDetailsForm from "../module/ProfileDetailsForm";
 import ShowProfileDetails from "../module/ShowProfileDetails";
 
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 import Loader from "../elements/Loader";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
@@ -10,6 +11,7 @@ import { signOut } from "next-auth/react";
 import { toast } from "react-toastify";
 
 function ProfilePage() {
+  const router = useRouter();
   const { data, error, isLoading } = useSWR("/api/profile", fetcher);
 
   const signOutHandler = () => {
@@ -33,6 +35,7 @@ function ProfilePage() {
     if (data.status === "success") {
       toast.success(data.notification);
       signOut();
+      router.replace("/");
     }
   };
 
