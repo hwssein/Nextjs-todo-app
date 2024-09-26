@@ -2,6 +2,8 @@ import AddTodoPage from "@/components/template/AddTodoPage";
 
 import CloseTodoBtn from "@/components/elements/CloseTodoBtn";
 import connectDB from "@/utils/connectDB";
+import { getServerSession } from "next-auth";
+import { authOption } from "../api/auth/[...nextauth]";
 
 function AddTodo() {
   return (
@@ -13,10 +15,20 @@ function AddTodo() {
 }
 
 const getServerSideProps = async (context) => {
-  try {
-    await connectDB();
-  } catch (error) {
-    console.log(error);
+  const session = await getServerSession(context.req, context.res, authOption);
+
+  if (session) {
+    try {
+      await connectDB();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  if (!session) {
+    return {
+      redirect: { destination: "/" },
+    };
   }
 
   return {

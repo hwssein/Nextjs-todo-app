@@ -18,7 +18,6 @@ const getServerSideProps = async (context) => {
     return {
       redirect: {
         destination: "/add-todo",
-        permanent: false,
       },
     };
   }
