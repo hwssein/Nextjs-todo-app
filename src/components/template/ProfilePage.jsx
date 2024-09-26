@@ -70,7 +70,7 @@ function ProfilePage() {
             ایمیل:
           </Typography>
           <Typography component="h6" variant="h6" color="secondary">
-            {data.data.email}
+            {data?.data?.email}
           </Typography>
         </Box>
       </Stack>
