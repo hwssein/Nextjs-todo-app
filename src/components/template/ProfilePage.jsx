@@ -11,6 +11,8 @@ import { signOut } from "next-auth/react";
 import { toast } from "react-toastify";
 
 function ProfilePage() {
+  const router = useRouter();
+
   const { data, error, isLoading } = useSWR("/api/profile", fetcher);
 
   const signOutHandler = () => {
@@ -38,6 +40,7 @@ function ProfilePage() {
   };
 
   if (isLoading) return <Loader />;
+  if (error) router.replace("/");
 
   return (
     <>
@@ -46,7 +49,7 @@ function ProfilePage() {
         spacing={1}
         divider={<Divider orientation="horizontal" flexItem />}
       >
-        {!data.data.name || !data.data.lastName ? (
+        {!data?.data?.name || !data?.data?.lastName ? (
           <ProfileDetailsForm />
         ) : (
           <ShowProfileDetails data={data.data} />
